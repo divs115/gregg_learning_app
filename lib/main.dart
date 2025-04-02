@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_flip_card/flutter_flip_card.dart';
 
 void main() {
   runApp(MyApp());
@@ -56,6 +57,39 @@ class FlashCardList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        GestureFlipCard(
+          animationDuration: const Duration(milliseconds: 300),
+          axis: FlipAxis.vertical,
+          enableController:
+              false, // if [True] if you need flip the card using programmatically
+          frontWidget: Center(
+            child: Container(
+              width: 300,
+              height: 200,
+              child: Stack(
+                children: [
+                  Align(
+                    child: Image.asset('assets/b.png', fit: BoxFit.contain),
+                  ),
+                  Positioned.fill(
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Text(
+                        "Sample Text",
+                        style: TextStyle(color: Colors.black, fontSize: 20),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          backWidget: Container(
+            width: 300,
+            height: 200,
+            child: Image.asset('assets/bee.png', fit: BoxFit.contain),
+          ),
+        ),
         Card(
           child: Column(
             mainAxisSize: MainAxisSize.min,
