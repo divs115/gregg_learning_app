@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_flip_card/flutter_flip_card.dart';
 
+var tobacco = Color.fromARGB(255, 181, 158, 125);
+var vanilla = Color.fromARGB(255, 241, 234, 218);
+var mahogany = Color.fromARGB(255, 88, 71, 56);
+var mountain = Color.fromARGB(255, 170, 163, 150);
+var sand = Color.fromARGB(255, 206, 193, 168);
+
 void main() {
   runApp(MyApp());
 }
@@ -27,23 +33,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Container(
-        margin: EdgeInsets.all(20), // Margin around the page
-        decoration: BoxDecoration(
-          color: Colors.blueGrey[50], // Background color
-          border: Border.all(
-            color: Color.fromARGB(255, 241, 234, 218),
-            width: 3,
-          ), // Border
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Scaffold(
-          appBar: AppBar(
-            // title: const Text('AppBar Demo'),
-            title: Image.asset('assets/logo.png', width: 50),
-            backgroundColor: Color.fromARGB(255, 181, 158, 125),
+        color: tobacco,
+        child: Container(
+          margin: const EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: tobacco,
+            boxShadow: [BoxShadow(color: vanilla, spreadRadius: 2.5)],
           ),
-          body: Center(child: FlashCardList()),
-          backgroundColor: Color.fromARGB(255, 181, 158, 125),
+          child: FlashCardList(),
         ),
       ),
     );
@@ -57,109 +55,72 @@ class FlashCardList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        GestureFlipCard(
-          animationDuration: const Duration(milliseconds: 300),
-          axis: FlipAxis.vertical,
-          enableController:
-              false, // if [True] if you need flip the card using programmatically
-          frontWidget: Center(
-            child: Container(
-              width: 300,
-              height: 200,
-              child: Stack(
-                children: [
-                  Align(
-                    child: Image.asset('assets/b.png', fit: BoxFit.contain),
-                  ),
-                  Positioned.fill(
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Text(
-                        "Sample Text",
-                        style: TextStyle(color: Colors.black, fontSize: 20),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          backWidget: Container(
-            width: 300,
-            height: 200,
-            child: Image.asset('assets/bee.png', fit: BoxFit.contain),
-          ),
-        ),
-        Card(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              const ListTile(title: Text('K')),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  TextButton(
-                    child: const Text('can'),
-                    onPressed: () {
-                      /* ... */
-                    },
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        Card(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              const ListTile(title: Text('G')),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  TextButton(
-                    child: const Text('go'),
-                    onPressed: () {
-                      /* ... */
-                    },
-                  ),
-                  const SizedBox(width: 8),
-                  TextButton(
-                    child: const Text('good'),
-                    onPressed: () {
-                      /* ... */
-                    },
-                  ),
-                  const SizedBox(width: 8),
-                ],
-              ),
-            ],
-          ),
-        ),
+        Flashcard(),
+        Flashcard(),
+        Flashcard(),
+        Flashcard(),
+        Flashcard(),
+        Flashcard(),
       ],
     );
   }
 }
 
+class Flashcard extends StatelessWidget {
+  const Flashcard({super.key});
 
-
-// Container(
-//           color: Color.fromARGB(255, 181, 158, 125), // Background color
-//           // margin: EdgeInsets.all(20), // Margin around the page
-//           // decoration: BoxDecoration(
-//           //   color: Colors.blueGrey[50], // Background color
-//           //   border: Border.all(color: Colors.black, width: 3), // Border
-//           //   borderRadius: BorderRadius.circular(12),
-//           // ),
-//           child: Text(
-//             'This is Google Fonts',
-//             style: GoogleFonts.lato(
-//               textStyle: TextStyle(
-//                 fontSize: 20,
-//                 fontWeight: FontWeight.w400,
-//                 color: Color.fromARGB(255, 241, 234, 218),
-//                 letterSpacing: .5,
-//               ),
-//             ),
-//           ),
-//         ),
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(15.0),
+      child: GestureFlipCard(
+        animationDuration: const Duration(milliseconds: 300),
+        axis: FlipAxis.vertical,
+        enableController:
+            false, // if [True] if you need flip the card using programmatically
+        frontWidget: Center(
+          child: Stack(
+            alignment: AlignmentDirectional(0.1, 0.1),
+            children: <Widget>[
+              Container(
+                width: 280,
+                height: 180,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: vanilla,
+                  boxShadow: [BoxShadow(color: vanilla, spreadRadius: 1)],
+                ),
+              ),
+              Container(
+                width: 270,
+                height: 170,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: mahogany,
+                  boxShadow: [BoxShadow(color: mahogany, spreadRadius: 2)],
+                ),
+              ),
+            ],
+          ),
+        ),
+        backWidget: Center(
+          child: Container(
+            width: 300,
+            height: 200,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: tobacco,
+              boxShadow: [BoxShadow(color: vanilla, spreadRadius: 2)],
+            ),
+            child: Text("World"),
+          ),
+        ),
+        // Container(
+        //   width: 300,
+        //   height: 200,
+        //   child: Image.asset('assets/bee.png', fit: BoxFit.contain),
+        // ),
+      ),
+    );
+  }
+}
