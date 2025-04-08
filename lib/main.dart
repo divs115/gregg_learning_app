@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_flip_card/flutter_flip_card.dart';
 
-var tobacco = Color.fromARGB(255, 181, 158, 125);
-var vanilla = Color.fromARGB(255, 241, 234, 218);
-var mahogany = Color.fromARGB(255, 88, 71, 56);
-var mountain = Color.fromARGB(255, 170, 163, 150);
-var sand = Color.fromARGB(255, 206, 193, 168);
+const tobacco = Color.fromARGB(255, 181, 158, 125);
+const vanilla = Color.fromARGB(255, 241, 234, 218);
+const mahogany = Color.fromARGB(255, 88, 71, 56);
+const mountain = Color.fromARGB(255, 170, 163, 150);
+const sand = Color.fromARGB(255, 206, 193, 168);
 
 void main() {
   runApp(MyApp());
@@ -29,19 +29,44 @@ void main() {
 ///
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Container(
-        color: tobacco,
-        child: Container(
-          margin: const EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: tobacco,
-            boxShadow: [BoxShadow(color: vanilla, spreadRadius: 2.5)],
+    return new MaterialApp(home: LearningApp());
+  }
+}
+
+class LearningApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: tobacco,
+      child: Container(
+        width: 380,
+        height: 570,
+        margin: const EdgeInsets.all(20.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: sand,
+          border: Border.all(color: sand, width: 2.5),
+          boxShadow: [
+            BoxShadow(
+              color: mahogany,
+              spreadRadius: 0.5,
+              blurRadius: 2,
+              offset: Offset(0.5, 0.5),
+            ),
+          ],
+        ),
+        child: Scaffold(
+          backgroundColor: tobacco,
+          appBar: AppBar(
+            scrolledUnderElevation: 0,
+            backgroundColor: tobacco,
+            title: Image.asset('assets/logo.png', width: 50),
           ),
-          child: FlashCardList(),
+          body: Center(child: FlashCardList()),
         ),
       ),
     );
@@ -72,7 +97,7 @@ class Flashcard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(15.0),
+      margin: const EdgeInsets.all(20.0),
       child: GestureFlipCard(
         animationDuration: const Duration(milliseconds: 300),
         axis: FlipAxis.vertical,
@@ -83,21 +108,33 @@ class Flashcard extends StatelessWidget {
             alignment: AlignmentDirectional(0.1, 0.1),
             children: <Widget>[
               Container(
-                width: 280,
-                height: 180,
+                width: 245,
+                height: 150,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: vanilla,
-                  boxShadow: [BoxShadow(color: vanilla, spreadRadius: 1)],
+                  borderRadius: BorderRadius.circular(5),
+                  color: sand,
+                  boxShadow: [BoxShadow(color: sand, spreadRadius: 2)],
                 ),
               ),
               Container(
-                width: 270,
-                height: 170,
+                width: 233,
+                height: 138,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(5),
                   color: mahogany,
                   boxShadow: [BoxShadow(color: mahogany, spreadRadius: 2)],
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: Text(
+                        'K',
+                        style: GoogleFonts.kalnia(
+                          textStyle: TextStyle(color: vanilla),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -105,12 +142,12 @@ class Flashcard extends StatelessWidget {
         ),
         backWidget: Center(
           child: Container(
-            width: 300,
-            height: 200,
+            width: 200,
+            height: 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: tobacco,
-              boxShadow: [BoxShadow(color: vanilla, spreadRadius: 2)],
+              boxShadow: [BoxShadow(color: sand, spreadRadius: 2)],
             ),
             child: Text("World"),
           ),
