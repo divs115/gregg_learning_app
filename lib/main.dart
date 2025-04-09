@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_flip_card/flutter_flip_card.dart';
@@ -96,6 +98,8 @@ class Flashcard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var wordList = ["two", "three", "four"];
+
     return Container(
       margin: const EdgeInsets.all(20.0),
       child: GestureFlipCard(
@@ -103,61 +107,124 @@ class Flashcard extends StatelessWidget {
         axis: FlipAxis.vertical,
         enableController:
             false, // if [True] if you need flip the card using programmatically
-        frontWidget: Center(
-          child: Stack(
-            alignment: AlignmentDirectional(0.1, 0.1),
-            children: <Widget>[
-              Container(
-                width: 245,
-                height: 150,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: sand,
-                  boxShadow: [BoxShadow(color: sand, spreadRadius: 2)],
-                ),
-              ),
-              Container(
-                width: 233,
-                height: 138,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: mahogany,
-                  boxShadow: [BoxShadow(color: mahogany, spreadRadius: 2)],
-                ),
-                child: Row(
-                  children: <Widget>[
-                    Flexible(
-                      child: Text(
-                        'K',
-                        style: GoogleFonts.kalnia(
-                          textStyle: TextStyle(color: vanilla),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        backWidget: Center(
-          child: Container(
-            width: 200,
-            height: 100,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: tobacco,
-              boxShadow: [BoxShadow(color: sand, spreadRadius: 2)],
-            ),
-            child: Text("World"),
-          ),
-        ),
-        // Container(
-        //   width: 300,
-        //   height: 200,
-        //   child: Image.asset('assets/bee.png', fit: BoxFit.contain),
-        // ),
+        frontWidget: Flipcard(wordList: wordList),
+        backWidget: Flipcard(wordList: ['hello']),
       ),
     );
   }
 }
+
+class Flipcard extends StatelessWidget {
+  const Flipcard({super.key, required this.wordList});
+
+  final List<String> wordList;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Stack(
+        alignment: AlignmentDirectional(0.1, 0.1),
+        children: <Widget>[
+          Container(
+            width: 245,
+            height: 150,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: sand,
+              boxShadow: [
+                BoxShadow(
+                  color: mahogany,
+                  spreadRadius: 0.5,
+                  blurRadius: 7,
+                  offset: Offset(1.5, 1.5),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: 230,
+            height: 135,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: mahogany,
+              boxShadow: [BoxShadow(color: mahogany, spreadRadius: 2)],
+            ),
+            child: Row(
+              children: <Widget>[
+                flashcardHeading(txt: 'K'),
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(45.0, 0.0, 0.0, 0.0),
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: [
+                        for (var i = 0; i < wordList.length; i++)
+                          Text(
+                            wordList[i],
+                            style: GoogleFonts.kreon(
+                              textStyle: TextStyle(
+                                color: vanilla,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+                // flashcardSubHeading(list: ['can', 'coal']),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class flashcardHeading extends StatelessWidget {
+  final txt;
+  const flashcardHeading({super.key, this.txt});
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(45.0, 0.0, 0.0, 0.0),
+        child: Text(
+          this.txt,
+          style: GoogleFonts.kalnia(
+            textStyle: TextStyle(color: vanilla, fontSize: 60),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class flashcardSubHeading extends StatelessWidget {
+  final list;
+  const flashcardSubHeading({super.key, this.list});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text("hello");
+  }
+}
+
+// Flexible(
+//         child: Padding(
+//           padding: const EdgeInsets.fromLTRB(45.0, 0.0, 0.0, 0.0),
+//           child: ListView(
+//             shrinkWrap: true,
+//             children: [
+//               Text(
+//                 'can',
+//                 style: GoogleFonts.kreon(
+//                   textStyle: TextStyle(color: vanilla, fontSize: 20),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
