@@ -1,0 +1,10 @@
+^C:\USERS\DIVYA\DESKTOP\PROJECTS\FLUTTER PROJECTS\GREGG_SHORTHAND\BUILD\WINDOWS\X64\CMAKEFILES\E8C73E038A797B90D1D7AEA500F6B7F7\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/windows" "-BC:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/gregg_shorthand.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

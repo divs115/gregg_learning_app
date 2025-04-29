@@ -1,0 +1,10 @@
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/CMakeFiles/INSTALL.dir
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/CMakeFiles/ALL_BUILD.dir
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/flutter/CMakeFiles/flutter_wrapper_plugin.dir
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/flutter/CMakeFiles/flutter_wrapper_app.dir
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/flutter/CMakeFiles/flutter_assemble.dir
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/flutter/CMakeFiles/INSTALL.dir
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/runner/CMakeFiles/gregg_shorthand.dir
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/runner/CMakeFiles/INSTALL.dir
+C:/Users/Divya/Desktop/Projects/Flutter Projects/gregg_shorthand/build/windows/x64/runner/CMakeFiles/ALL_BUILD.dir

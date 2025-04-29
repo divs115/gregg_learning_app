@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "front": "K",
+      "words": ["can"],
+      "back":"k_stroke.png"
+    },
+    {
+      "front": "G",
+      "words": ["go", "good"],
+      "back":"g_stroke.png"
+    },
+    {
+      "front": "R",
+      "words": ["are", "our", "hour"],
+      "back":"r_stroke.png"
+    },
+    {
+      "front": "X",
+      "words": ["xmas"],
+      "back":"x_stroke.png"
+    }
+  ]
+}
+  
