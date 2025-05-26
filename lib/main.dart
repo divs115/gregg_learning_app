@@ -205,6 +205,6 @@ class flashcardBack extends StatelessWidget {
                   )
                   .toList(),
         )
-        : Image.asset('assets/${wordList['back']}');
+        : Image.asset('assets/forms/${wordList['back']}');
   }
 }
